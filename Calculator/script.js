@@ -52,9 +52,10 @@ function clear(){
 }
 
 function calculate(array){
-    answer = array
+    answer = array;
     return answer;
 }
+del.addEventListener('click',deleteLast)
 answerButn.addEventListener('click',calculateAnswer)
 clearButn.addEventListener('click',clear)
 storedAnswer.addEventListener('click',()=>{
@@ -67,8 +68,7 @@ function calculateAnswer(){
     answer = currentAnswer;
     stored = eval(currentAnswer)
 }
-// function deleteLast(){
-//     screen1.textContent.slice(screen1.textContent.length,1)
-//     for(let i=0;i<answer.length-1;i++){       
-//     }
-// }
+function deleteLast(){
+    screen1.textContent = screen1.textContent.slice(0,-1);
+    array = array.slice(0,-1)
+}

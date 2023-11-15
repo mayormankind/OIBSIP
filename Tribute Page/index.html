@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tribute Page</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap">
+</head>
+<body>
+    <main class="app">
+        <div class="container">
+            <section class="header">
+                <h1 class="name">Chadwick Boseman</h1>
+                <h3>1976 - 2020</h3>
+            </section>
+            <section class="image">
+                <img src="images/1.jpg" alt="Chadwick Boseman" class="img">
+            </section>
+            <section class="biography">
+                <h1 class="heading">About him</h1>
+                <p>Chadwick Boseman, born on November 29, 1976, in Anderson, South Carolina, emerged as a beacon of talent and resilience. He honed his passion for acting at Howard University, graduating with a Bachelor of Fine Arts in Directing. Early in his career, Boseman delved into writing and directing, showcasing his multifaceted creativity.
+    
+                His breakthrough came with the portrayal of Jackie Robinson in "42" (2013), revealing his ability to embody historical figures with authenticity. Boseman continued to leave an indelible mark with his portrayal of James Brown in "Get on Up" (2014), showcasing his versatility and magnetic screen presence.
+                        
+                The pinnacle of his career was undoubtedly the role of T'Challa in Marvel's "Black Panther" (2018), where he became a symbol of empowerment and representation for millions. Boseman's commitment to his craft was awe-inspiring, especially considering his private battle with colon cancer, a struggle he faced with quiet strength.
+                        
+                Beyond his cinematic achievements, Chadwick Boseman's philanthropic work and advocacy for social justice added depth to his legacy. His untimely passing in 2020 left a void in the industry and in the hearts of fans worldwide. Yet, Boseman's impact endures, reminding us of the power of art to inspire, uplift, and bring about positive change.</p>
+            </section>
+            <hr>
+            <p class="dsng">Designed by <span>Man kind</span></p>
+        </div>
+    </main>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const tributeImage = document.querySelector(".img");
+            const images = ["images/1.jpg", "images/2.jpeg", "images/3.jpeg", "images/4.jpeg" ];
+            let currentIndex = 0;
+            
+            function changeImage() {
+                tributeImage.src = images[currentIndex];
+                currentIndex = (currentIndex + 1) % images.length;
+            }
+            changeImage();
+            setInterval(changeImage, 10000);
+        });
+    </script>
+</body>
+</html>
