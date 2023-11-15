@@ -13,7 +13,6 @@ const time = document.querySelector('.moment');
 let wrapper = document.querySelector('.greetings');
 const inputform = document.querySelector('form');
 let currentPage = 'pending';
-let action;
 
 
 (function text(){
@@ -57,9 +56,10 @@ function getname(){
 getname();
 options.forEach(option=>{
     option.addEventListener('click',()=>{
+        options.forEach(opt => opt.classList.remove('active'));
+        option.classList.add('active')
         if(option.getAttribute('value')=='pending'){
             currentPage = 'pending'
-            // option.style.borderBottom = '2px solid green';
             ul.innerText = ''
             allPlans.length == 0 ? ul.innerHTML='<p>Nothing here yet</p>' :
             allPlans.map(plan=>{
@@ -68,7 +68,6 @@ options.forEach(option=>{
             })
         }else if(option.getAttribute('value')=='complete'){
             currentPage = 'completed'
-            // option.style.borderBottom = '2px solid green';
             ul.innerText = ''
             completed.length == 0 ? ul.innerHTML='<p>Nothing here yet</p>':
             completed.map(plan=>{
@@ -111,13 +110,12 @@ inputform.addEventListener('submit',(e)=>{
         const button = document.createElement('button')
         radio.type = 'checkbox'
         radio.addEventListener('click',()=>{
-            action = 'Completed'
             alert('The plan would be removed in 5 minutes')
-            // setTimeout(()=>{
+            setTimeout(()=>{
                 ul.removeChild(list)
                 deletePlan(list)
                 updateStorage()
-            // },300000)
+            },300000)
         })
         list.append(radio)
         span.textContent = new Date().toLocaleString() || plan.date;
@@ -127,7 +125,6 @@ inputform.addEventListener('submit',(e)=>{
         list.append(div)
         button.textContent = 'Delete'
         button.addEventListener('click',()=>{
-            action = 'Deleted'
             ul.removeChild(list)
             deletePlan(list)
             updateStorage()
@@ -142,7 +139,6 @@ inputform.addEventListener('submit',(e)=>{
 })
 
 window.addEventListener('load',()=>{
-    // pending.style.borderBottom = '2px solid green';
     allPlans.map(plan=>{
        const newplan = createNewPlan(plan)
         ul.append(newplan)
@@ -161,13 +157,12 @@ function createNewPlan(item){
     const button = document.createElement('button')
     radio.type = 'checkbox';
     radio.addEventListener('click',()=>{
-        action = 'Completed'
         alert('The plan would be removed in 5 minutes')
-        // setTimeout(()=>{
+        setTimeout(()=>{
             ul.removeChild(list)
             deletePlan(list)
             updateStorage()
-        // },300000)
+        },300000)
     })
     list.append(radio)
     span.textContent = new Date().toLocaleString() || item.date;
@@ -177,7 +172,6 @@ function createNewPlan(item){
     list.append(div)
     button.textContent = 'Delete'
     button.addEventListener('click',()=>{
-        action = 'Deleted'
         ul.removeChild(list)
         deletePlan(item.id,item.plan)
         updateStorage()
@@ -192,9 +186,9 @@ function CompletedPlan(item){
     const h4 = document.createElement('h4')
     const p = document.createElement('p')
     const span = document.createElement('span')
-    span.textContent = `${action=='Completed' ? 'Completed' : 'Deleted'} at: ${new Date().toLocaleString() || item.date}`;
+    span.textContent = `Completed at: ${new Date().toLocaleString() || item.date}`;
     h4.textContent = userplan.value || item.plan;
-    p.textContent = action == 'Completed' ? 'Completed' : 'Deleted';
+    p.textContent = 'Completed';
     div.append(span)
     div.append(h4)
     list.append(div)

@@ -80,6 +80,9 @@ body{
                 &:hover,&:active{
                     border-bottom: 2px solid green;
                 }
+                .active{
+                    border-bottom: 2px solid green;
+                }
             }
         }
         .rotary{
@@ -92,7 +95,6 @@ body{
                 width: 350px;
                 height: 350px;
                 border: 10px solid #b4ecb4;
-
                 border-radius: 50%;
                 background: transparent;
                 &::after{

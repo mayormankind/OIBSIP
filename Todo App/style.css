@@ -82,6 +82,9 @@ body main .tasks .option {
 body main .tasks .option:hover, body main .tasks .option:active {
   border-bottom: 2px solid green;
 }
+body main .tasks .option .active {
+  border-bottom: 2px solid green;
+}
 body main .rotary {
   position: absolute;
   top: 50%;
